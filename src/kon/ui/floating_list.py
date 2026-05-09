@@ -281,8 +281,9 @@ class FloatingList[T](Widget):
         self._render_key += 1
 
     def _render_row(self, item: ListItem[T], is_selected: bool) -> Text:
-        selected_color = config.ui.colors.selected
-        dim_color = config.ui.colors.dim
+        colors = config.ui.colors
+        selected_color = colors.selected
+        dim_color = colors.dim
         text = Text()
 
         # Arrow indicator
@@ -304,9 +305,9 @@ class FloatingList[T](Widget):
             label = raw_label[: effective_label_width - 1] + "…"
         else:
             label = raw_label
-        label = label.ljust(effective_label_width + 4)
+        label = label.ljust(effective_label_width + 2)
         if is_selected:
-            text.append(label, style=selected_color)
+            text.append(label, style=f"bold {selected_color}")
         else:
             text.append(label)
 
@@ -319,7 +320,7 @@ class FloatingList[T](Widget):
                 else:
                     description = description[: self._description_width - 1] + "…"
             text.append(" ")
-            text.append(description, style=selected_color if is_selected else dim_color)
+            text.append(description, style=f"bold {selected_color}" if is_selected else dim_color)
 
         return text
 
