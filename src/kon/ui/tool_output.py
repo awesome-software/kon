@@ -7,9 +7,9 @@ from kon import config
 def format_expand_hint(hidden_lines: int) -> Text:
     colors = config.ui.colors
     text = Text()
-    text.append(f"... ({hidden_lines} lines hidden • ", style=colors.muted)
-    text.append("ctrl+o", style=colors.dim)
-    text.append(" to expand)", style=colors.muted)
+    text.append(f"... ({hidden_lines} lines hidden • ", style=colors.dim)
+    text.append("ctrl+o", style=colors.muted)
+    text.append(" to expand)", style=colors.dim)
     return text
 
 
